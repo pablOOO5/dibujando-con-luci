@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
-import { useLocation } from 'preact-iso'
+import { useNav } from '../lib/nav'
 import { listDrawings, deleteDrawing, type Drawing } from '../features/gallery/db'
 
 export function Gallery() {
-  const { route } = useLocation()
+  const route = useNav()
   const [items, setItems] = useState<Drawing[]>([])
   const [urls, setUrls] = useState<Record<string, string>>({})
   const urlsRef = useRef<string[]>([])

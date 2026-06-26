@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
-import { useLocation } from 'preact-iso'
+import { useNav } from '../lib/nav'
 import { loadContent, findAnimal } from '../content/loader'
 import type { Animal } from '../types'
 import { useColoring, type Tool } from '../features/coloring/useColoring'
@@ -13,7 +13,7 @@ const BRUSH_SIZE = 26
 const ERASER_SIZE = 52
 
 export function Coloring({ id }: { id?: string }) {
-  const { route } = useLocation()
+  const route = useNav()
   const [animal, setAnimal] = useState<Animal | null>(null)
   const [notFound, setNotFound] = useState(false)
 

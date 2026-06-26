@@ -3,6 +3,7 @@ import { Home } from './pages/Home'
 import { Coloring } from './pages/Coloring'
 import { Gallery } from './pages/Gallery'
 import { Settings } from './pages/Settings'
+import { BASE, path } from './lib/nav'
 import { useBathroomReminder } from './features/reminder/useBathroomReminder'
 import { ReminderPrompt } from './features/reminder/ReminderPrompt'
 
@@ -11,13 +12,13 @@ export function App() {
   const reminder = useBathroomReminder()
 
   return (
-    <LocationProvider>
+    <LocationProvider scope={BASE || undefined}>
       <div class="app">
         <Router>
-          <Route path="/" component={Home} />
-          <Route path="/colorear/:id" component={Coloring} />
-          <Route path="/galeria" component={Gallery} />
-          <Route path="/ajustes" component={Settings} />
+          <Route path={path('/')} component={Home} />
+          <Route path={path('/colorear/:id')} component={Coloring} />
+          <Route path={path('/galeria')} component={Gallery} />
+          <Route path={path('/ajustes')} component={Settings} />
           <Route default component={Home} />
         </Router>
       </div>

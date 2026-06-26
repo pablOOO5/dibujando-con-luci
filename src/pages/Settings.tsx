@@ -1,10 +1,10 @@
 import { useState } from 'preact/hooks'
-import { useLocation } from 'preact-iso'
+import { useNav } from '../lib/nav'
 import { useSettings } from '../store/settings'
 import { ParentGate } from '../components/ParentGate'
 
 export function Settings() {
-  const { route } = useLocation()
+  const route = useNav()
   const [unlocked, setUnlocked] = useState(false)
   const s = useSettings()
 

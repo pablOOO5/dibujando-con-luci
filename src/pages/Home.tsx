@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'preact/hooks'
-import { useLocation } from 'preact-iso'
+import { useNav } from '../lib/nav'
 import { loadContent, animalsByCategory } from '../content/loader'
 import { asset } from '../lib/assets'
 import type { ContentManifest } from '../types'
 
 export function Home() {
-  const { route } = useLocation()
+  const route = useNav()
   const [content, setContent] = useState<ContentManifest | null>(null)
   const [cat, setCat] = useState('')
 
