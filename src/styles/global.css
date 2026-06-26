@@ -501,12 +501,20 @@ button {
     overflow-y: auto;
     max-height: 100%;
   }
+  /* Mantener los swatches redondos: sin esto, flexbox los aplasta a ovalos
+     en vez de scrollear la paleta. */
+  .tool-bottom .swatch {
+    flex-shrink: 0;
+  }
   .tool-bottom .tools {
     flex-direction: column;
   }
 
-  /* Canvas: toma el alto disponible y queda centrado entre las dos columnas */
+  /* Canvas: usa todo el alto disponible del .stage y queda centrado entre las
+     dos columnas. max-width lo acota para que nunca tape las columnas. */
   .canvas-wrap {
-    width: min(94vw, calc(100dvh - 24px));
+    height: 100%;
+    width: auto;
+    max-width: 94vw;
   }
 }

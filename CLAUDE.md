@@ -79,6 +79,9 @@ Siempre resolver con `asset()` de `src/lib/assets.ts` (respeta `BASE_URL` para d
 subdirectorio, p.ej. GitHub Pages). El manifest guarda rutas con `/` inicial.
 
 ## Cómo agregar un animal (caso más común)
+> Medidas y formato correcto del dibujo (1:1, `viewBox 0 0 400 400`, qué se deforma
+> y un prompt para generarlo): ver [`docs/medidas-de-los-dibujos.md`](docs/medidas-de-los-dibujos.md).
+
 1. Crear `public/content/animals/<id>.svg`: contorno negro (`stroke="#1a1a1a"`,
    `stroke-width` ~7), `fill="none"`, `viewBox="0 0 400 400"`. Cada región a colorear debe
    estar **cerrada por trazos** (si no, el balde "se escapa"). Pupilas/detalles negros pueden
