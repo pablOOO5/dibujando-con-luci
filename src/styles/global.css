@@ -238,10 +238,12 @@ button {
   align-items: center;
   justify-content: center;
   padding: 6px;
+  overflow: hidden;
 }
 .canvas-wrap {
   position: relative;
   width: min(94vw, calc(100dvh - 240px));
+  max-height: 100%;
   aspect-ratio: 1;
   background: #fff;
   border-radius: var(--radio);
@@ -464,7 +466,7 @@ button {
 }
 
 /* Pantallas anchas (tablet apaisada): paleta y herramientas en una sola fila comoda */
-@media (orientation: landscape) and (min-width: 720px) {
+@media (orientation: landscape) and (min-width: 720px) and (min-height: 600px) {
   .canvas-wrap {
     width: min(70vw, calc(100dvh - 150px));
   }
