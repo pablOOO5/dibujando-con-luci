@@ -467,15 +467,46 @@ button {
   accent-color: var(--violeta);
 }
 
-/* Pantallas anchas (tablet apaisada): paleta y herramientas en una sola fila comoda */
+/* Pantallas anchas (tablet apaisada): layout lateral (acciones izq / canvas / herramientas der) */
 @media (orientation: landscape) and (min-width: 720px) and (min-height: 600px) {
-  .canvas-wrap {
-    width: min(70vw, calc(100dvh - 150px));
-  }
-  .tool-bottom {
+  .coloring {
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
+  }
+
+  /* Columna izquierda: acciones apiladas, sin titulo */
+  .tool-top {
+    flex-direction: column;
+    width: 96px;
+    flex-shrink: 0;
+    gap: 16px;
+  }
+  .coloring-title {
+    display: none;
+  }
+  .btn-listo {
+    margin-top: auto;
+  }
+
+  /* Franja derecha: colores pegados al canvas, herramientas en el borde exterior */
+  .tool-bottom {
+    flex-direction: row-reverse;
+    align-items: stretch;
+    width: auto;
+    flex-shrink: 0;
+    gap: 14px;
+  }
+  .tool-bottom .palette {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+  .tool-bottom .tools {
+    flex-direction: column;
+  }
+
+  /* Canvas: toma el alto disponible y queda centrado entre las dos columnas */
+  .canvas-wrap {
+    width: min(94vw, calc(100dvh - 24px));
   }
 }
