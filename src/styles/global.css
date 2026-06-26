@@ -467,8 +467,8 @@ button {
   accent-color: var(--violeta);
 }
 
-/* Pantallas anchas (tablet apaisada): layout lateral (acciones izq / canvas / herramientas der) */
-@media (orientation: landscape) and (min-width: 720px) and (min-height: 600px) {
+/* Cualquier pantalla apaisada (celu o tablet de costado): layout lateral (acciones izq / canvas / herramientas der) */
+@media (orientation: landscape) {
   .coloring {
     flex-direction: row;
   }
