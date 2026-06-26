@@ -501,6 +501,11 @@ button {
     overflow-y: auto;
     max-height: 100%;
   }
+  /* Mantener los swatches redondos: sin esto, flexbox los aplasta a ovalos
+     en vez de scrollear la paleta. */
+  .tool-bottom .swatch {
+    flex-shrink: 0;
+  }
   .tool-bottom .tools {
     flex-direction: column;
   }

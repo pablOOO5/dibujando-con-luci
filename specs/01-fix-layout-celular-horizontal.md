@@ -1,6 +1,6 @@
 # SPEC 01 — Arreglar layout en celular horizontal (canvas y overlays)
 
-> **Estado:** Aprobado · **Depende de:** — · **Fecha:** 2026-06-26
+> **Estado:** IMPLEMENTADO · **Depende de:** — · **Fecha:** 2026-06-26
 > **Objetivo:** Que en celular en horizontal el dibujo no se monte sobre las herramientas y que los overlays no queden cortados, achicando el canvas y dando scroll a los overlays cuando la pantalla es baja.
 
 ---
@@ -50,14 +50,14 @@ Todos los pasos son sobre `src/styles/global.css`. Cada paso deja la app funcion
 
 ## Criterios de aceptación
 
-- [ ] En celular en horizontal (viewport ~800×360) en `/colorear/koala`, el dibujo **no** se monta sobre las herramientas ni la paleta.
-- [ ] En ese mismo viewport, la barra de herramientas (balde/pincel/goma) y la paleta de colores quedan **completamente visibles**.
-- [ ] El canvas se ve completo (no recortado) y centrado, aunque más chico que en tablet.
-- [ ] En tablet apaisada (viewport ≥720×600), el layout de una sola fila (herramientas + paleta) **se mantiene igual** que antes.
-- [ ] En vertical (portrait) de celular, el layout **no cambia** respecto al actual.
-- [ ] En viewport ~800×360, al abrir el parent gate de Ajustes, el botón de confirmar es accesible (la tarjeta entra o scrollea).
-- [ ] En viewport ~800×360, al tocar "¡Listo! 🎉", el overlay de premio muestra sus botones accesibles (entra o scrollea).
-- [ ] `npm run typecheck` y `npm run build` pasan sin errores.
+- [x] En celular en horizontal (viewport ~800×360) en `/colorear/koala`, el dibujo **no** se monta sobre las herramientas ni la paleta.
+- [x] En ese mismo viewport, la barra de herramientas (balde/pincel/goma) y la paleta de colores quedan **completamente visibles**.
+- [X] El canvas se ve completo (no recortado) y centrado, aunque más chico que en tablet.
+- [X] En tablet apaisada (viewport ≥720×600), el layout de una sola fila (herramientas + paleta) **se mantiene igual** que antes.
+- [X] En vertical (portrait) de celular, el layout **no cambia** respecto al actual.
+- [X] En viewport ~800×360, al abrir el parent gate de Ajustes, el botón de confirmar es accesible (la tarjeta entra o scrollea).
+- [X] En viewport ~800×360, al tocar "¡Listo! 🎉", el overlay de premio muestra sus botones accesibles (entra o scrollea).
+- [X] `npm run typecheck` y `npm run build` pasan sin errores.
 
 ---
 
