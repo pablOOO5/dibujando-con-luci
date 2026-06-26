@@ -1,7 +1,7 @@
-# SPEC 02 — Layout lateral del canvas en tablet apaisada
+# SPEC 02 — Layout lateral del canvas en apaisado
 
 > **Estado:** aprobado · **Depende de:** SPEC 01 · **Fecha:** 2026-06-26
-> **Objetivo:** Que en tablet apaisada las acciones queden en una columna a la izquierda y los colores + herramientas en una franja a la derecha, con el dibujo centrado, replicando el layout de la app de referencia.
+> **Objetivo:** Que en cualquier pantalla apaisada (celular o tablet de costado) las acciones queden en una columna a la izquierda y los colores + herramientas en una franja a la derecha, con el dibujo centrado, replicando el layout de la app de referencia.
 
 ---
 
@@ -9,7 +9,7 @@
 
 **Adentro:**
 
-- Solo **tablet apaisada** (`@media (orientation: landscape) and (min-width: 720px) and (min-height: 600px)`): reorganizar el layout de `/colorear/:id` a tres zonas — **columna izquierda** (acciones), **canvas centrado**, **franja derecha** (colores + herramientas).
+- Cualquier pantalla **apaisada**, sin importar el dispositivo (`@media (orientation: landscape)`): reorganizar el layout de `/colorear/:id` a tres zonas — **columna izquierda** (acciones), **canvas centrado**, **franja derecha** (colores + herramientas).
 - **Columna izquierda:** volver (←) arriba, deshacer (↩️) en el medio, "¡Listo! 🎉" al pie. Sin título del animal.
 - **Franja derecha:** la **paleta de colores** pegada al canvas y las **herramientas** (balde/pincel/goma) en el borde exterior, como en la imagen de referencia.
 - La paleta de colores en la franja derecha **scrollea verticalmente** si no entran todos los swatches (sin achicar los targets).
@@ -21,7 +21,7 @@
 - Botón **tacho de basura** (reiniciar el dibujo desde cero) — feature nueva, va en otro spec.
 - Botón **cámara** (guardar captura de pantalla en el dispositivo) — feature nueva, va en otro spec.
 - **Forzar la orientación apaisada** en la PWA (manifest/API).
-- El layout de **celular** (vertical y horizontal): no se toca, mantiene barra arriba + barra abajo con título y "¡Listo!".
+- El layout en **vertical** (celu o tablet en portrait): no se toca, mantiene barra arriba + barra abajo con título y "¡Listo!".
 - Cualquier cambio en el motor de colorear (`useColoring`, `floodFill`) o en el flujo de premios/galería.
 - Calcar los colores de los paneles de la referencia (azul/madera); se mantiene el tema violeta de la app.
 
@@ -35,7 +35,7 @@ Esta funcionalidad **no introduce ni modifica estructuras de datos**. Son cambio
 
 ## Plan de implementación
 
-Todos los pasos son sobre `src/styles/global.css`, dentro del bloque `@media (orientation: landscape) and (min-width: 720px) and (min-height: 600px)` (se reemplaza su contenido actual). El celular no matchea esa query, así que no se afecta.
+Todos los pasos son sobre `src/styles/global.css`, dentro del bloque `@media (orientation: landscape)` (se reemplaza el contenido del bloque que antes gateaba por tamaño). En vertical no matchea esa query, así que el layout en portrait no se afecta.
 
 1. **Poner `.coloring` en fila.** `flex-direction: row`. Efecto: los tres bloques quedan lado a lado (acciones izq · canvas centro · herramientas der).
    _Prueba manual:_ viewport 1024×768 → se ven tres columnas.
@@ -55,14 +55,14 @@ Todos los pasos son sobre `src/styles/global.css`, dentro del bloque `@media (or
 
 ## Criterios de aceptación
 
-- [ ] En tablet apaisada (viewport ~1024×768) en `/colorear/koala`, las acciones quedan en una **columna a la izquierda**: volver (←) arriba, deshacer (↩️) en el medio, "¡Listo! 🎉" al pie.
+- [ ] En cualquier pantalla apaisada (tablet ~1024×768 **y** celular ~800×360) en `/colorear/koala`, las acciones quedan en una **columna a la izquierda**: volver (←) arriba, deshacer (↩️) en el medio, "¡Listo! 🎉" al pie.
 - [ ] El **título del animal no se muestra** en ese layout.
 - [ ] Los **colores quedan pegados al canvas** y las **herramientas (balde/pincel/goma) en el borde derecho exterior**.
 - [ ] El **canvas se ve completo, cuadrado y centrado** entre ambas columnas.
 - [ ] Si los colores no entran a lo alto, la **paleta scrollea verticalmente** y los swatches **no se achican**.
 - [ ] El botón "¡Listo! 🎉" sigue disparando el festejo y el guardado en galería igual que antes.
-- [ ] En celular vertical, el layout **no cambia** (barra arriba + canvas + barra abajo, con título y "¡Listo!").
-- [ ] En celular horizontal (~800×360), el layout **no cambia** respecto al SPEC 01.
+- [ ] En vertical (celu o tablet en portrait), el layout **no cambia** (barra arriba + canvas + barra abajo, con título y "¡Listo!").
+- [ ] En celular horizontal (~800×360) el canvas se ve completo y no se monta sobre las columnas (paleta scrollea si hace falta).
 - [ ] `npm run typecheck` y `npm run build` pasan sin errores.
 
 ---
@@ -76,6 +76,7 @@ Todos los pasos son sobre `src/styles/global.css`, dentro del bloque `@media (or
 - **No:** quitar "¡Listo!" y delegar el guardado al futuro botón cámara. Rompe una función existente antes de tener el reemplazo.
 - **Sí:** paleta scrollable vertical en vez de achicar swatches. Los targets grandes son clave para Luci (accesibilidad).
 - **No:** agregar ahora el tacho (reiniciar) y la cámara (captura). Son features nuevas; este spec es solo layout.
+- **Sí:** disparar el layout lateral con solo `@media (orientation: landscape)`, sin gate de tamaño. El usuario lo quiere en cualquier dispositivo de costado (celu o tablet). El layout nuevo dimensiona el canvas por altura y scrollea la paleta, así que **no** reaparece el desborde que motivó el SPEC 01 (que era el layout viejo en fila). Esto revisa la decisión del SPEC 01 de mandar el celu horizontal al layout en columna.
 - **No:** forzar orientación apaisada en la PWA. Queda para otro spec (mencionado como idea a futuro).
 - **No:** cambiar los colores de los paneles para calcar la referencia (azul/madera). Se mantiene el tema violeta de la app; "replicar" es la disposición, no la paleta de la otra app.
 
@@ -95,7 +96,7 @@ Todos los pasos son sobre `src/styles/global.css`, dentro del bloque `@media (or
 - Botón tacho de basura (reiniciar el dibujo).
 - Botón cámara (guardar captura en el dispositivo).
 - Forzar/sugerir orientación apaisada en la PWA.
-- Cambios en el layout de celular (vertical u horizontal).
+- Cambios en el layout en vertical (portrait) de celu o tablet.
 - Cambios en el motor de colorear o en el flujo de premios/galería.
 
 Cada una, si alguna vez se hace, va en su propio spec.
