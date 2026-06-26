@@ -1,0 +1,25 @@
+{
+  "name": "dibujando-con-luci",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Juego de colorear animales para Luci — PWA para tablet y celular",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "idb": "^8.0.0",
+    "preact": "^10.24.3",
+    "preact-iso": "^2.9.0",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.3",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.3",
+    "vite-plugin-pwa": "^0.21.1"
+  }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g fill="none" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- patas -->
+    <ellipse cx="95" cy="280" rx="33" ry="20"/>
+    <ellipse cx="245" cy="288" rx="33" ry="20"/>
+    <!-- cola -->
+    <path d="M64 256 q-26 8 -30 28"/>
+    <!-- caparazon -->
+    <path d="M60 262 q12 -136 142 -136 q130 0 142 136 Z"/>
+    <!-- borde del caparazon -->
+    <path d="M60 262 q142 46 284 0"/>
+    <!-- cabeza -->
+    <circle cx="332" cy="218" r="36"/>
+    <circle cx="344" cy="208" r="6" fill="#1a1a1a" stroke="none"/>
+    <!-- manchas del caparazon -->
+    <circle cx="202" cy="178" r="40"/>
+    <circle cx="138" cy="208" r="22"/>
+    <circle cx="266" cy="208" r="22"/>
+  </g>
+</svg>

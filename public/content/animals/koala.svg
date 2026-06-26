@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g fill="none" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- cuerpo -->
+    <ellipse cx="200" cy="300" rx="95" ry="80"/>
+    <!-- brazos -->
+    <ellipse cx="118" cy="298" rx="27" ry="44" transform="rotate(20 118 298)"/>
+    <ellipse cx="282" cy="298" rx="27" ry="44" transform="rotate(-20 282 298)"/>
+    <!-- patas -->
+    <ellipse cx="165" cy="366" rx="28" ry="20"/>
+    <ellipse cx="235" cy="366" rx="28" ry="20"/>
+    <!-- orejas -->
+    <circle cx="123" cy="120" r="48"/>
+    <circle cx="277" cy="120" r="48"/>
+    <circle cx="123" cy="120" r="24"/>
+    <circle cx="277" cy="120" r="24"/>
+    <!-- cabeza -->
+    <circle cx="200" cy="178" r="95"/>
+    <!-- nariz -->
+    <path d="M200 172 q-40 8 -32 50 q32 30 64 0 q8 -42 -32 -50 Z"/>
+    <!-- ojos -->
+    <circle cx="158" cy="160" r="10" fill="#1a1a1a" stroke="none"/>
+    <circle cx="242" cy="160" r="10" fill="#1a1a1a" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g fill="none" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- cuerpo -->
+    <ellipse cx="215" cy="265" rx="128" ry="84"/>
+    <!-- cola -->
+    <path d="M330 250 q42 -8 50 14 q-20 18 -46 8 Z"/>
+    <!-- cuello y cabeza -->
+    <circle cx="120" cy="155" r="62"/>
+    <!-- pico -->
+    <path d="M68 150 q-48 -8 -52 18 q4 24 52 16 Z"/>
+    <!-- ojo -->
+    <circle cx="118" cy="138" r="9" fill="#1a1a1a" stroke="none"/>
+    <!-- ala -->
+    <path d="M180 235 q72 -34 126 6 q-42 52 -116 30 Z"/>
+    <!-- patas -->
+    <path d="M180 345 v34 m-22 0 h44"/>
+    <path d="M250 345 v34 m-22 0 h44"/>
+  </g>
+</svg>

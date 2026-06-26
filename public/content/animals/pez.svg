@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g fill="none" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- cuerpo -->
+    <ellipse cx="180" cy="210" rx="120" ry="78"/>
+    <!-- cola -->
+    <path d="M296 210 q56 -56 82 -40 q-16 40 0 80 q-26 16 -82 -40 Z"/>
+    <!-- aleta superior -->
+    <path d="M150 134 q42 -46 82 -20 q-30 26 -56 42 Z"/>
+    <!-- aleta inferior -->
+    <path d="M150 286 q42 46 82 20 q-30 -26 -56 -42 Z"/>
+    <!-- branquia -->
+    <path d="M110 150 q-22 60 0 120"/>
+    <!-- ojo -->
+    <circle cx="92" cy="190" r="15"/>
+    <circle cx="92" cy="190" r="6" fill="#1a1a1a" stroke="none"/>
+    <!-- boca -->
+    <path d="M58 215 q-14 16 4 34"/>
+    <!-- burbujas -->
+    <circle cx="40" cy="150" r="11"/>
+    <circle cx="20" cy="116" r="7"/>
+  </g>
+</svg>
