@@ -1,6 +1,9 @@
 # Dependencias
 node_modules
 
+#MCP
+capturas-de-pantalla
+
 # Builds
 dist
 dist-ssr
