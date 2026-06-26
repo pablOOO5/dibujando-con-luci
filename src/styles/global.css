@@ -242,9 +242,9 @@ button {
 }
 .canvas-wrap {
   position: relative;
-  width: min(94vw, calc(100dvh - 240px));
+  width: min(94vw, calc((100dvh - 240px) * 1.5));
   max-height: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   background: #fff;
   border-radius: var(--radio);
   box-shadow: 0 6px 18px rgba(80, 50, 160, 0.18);
@@ -413,7 +413,7 @@ button {
 }
 .gallery-item img {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   object-fit: contain;
   border-radius: 14px;
 }
@@ -510,11 +510,12 @@ button {
     flex-direction: column;
   }
 
-  /* Canvas: usa todo el alto disponible del .stage y queda centrado entre las
-     dos columnas. max-width lo acota para que nunca tape las columnas. */
+  /* Canvas 3:2: se contiene en el .stage por ancho y por alto (lo que sea menor),
+     centrado entre las dos columnas, sin deformar ni tapar las columnas.
+     El ancho se acota por el alto disponible (* 1.5 = relacion 3:2). */
   .canvas-wrap {
-    height: 100%;
-    width: auto;
-    max-width: 94vw;
+    width: min(100%, calc((100dvh - 24px) * 1.5));
+    height: auto;
+    max-width: 100%;
   }
 }

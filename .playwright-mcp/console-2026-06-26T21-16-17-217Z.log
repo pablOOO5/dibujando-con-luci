@@ -1,0 +1,2 @@
+[      33ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:4173/dibujando-con-luci/colorear/koala:0
+[   23737ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ http://localhost:4173/dibujando-con-luci/assets/index-D10Mt_Gc.js:0

@@ -1,6 +1,6 @@
 # SPEC 03 — Paleta redonda en apaisado, canvas más grande y guía de medidas
 
-> **Estado:** aprobado · **Depende de:** SPEC 02 · **Fecha:** 2026-06-26
+> **Estado:** implementado · **Depende de:** SPEC 02 · **Fecha:** 2026-06-26
 > **Objetivo:** En apaisado, que los colores se vean redondos y scrolleen con las herramientas en el borde exterior, que el dibujo use todo el alto disponible, y documentar en `/docs` las medidas correctas de los dibujos (1:1, `viewBox 0 0 400 400`) con una referencia desde CLAUDE.md.
 
 ---
