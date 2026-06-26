@@ -504,4 +504,9 @@ button {
   .tool-bottom .tools {
     flex-direction: column;
   }
+
+  /* Canvas: toma el alto disponible y queda centrado entre las dos columnas */
+  .canvas-wrap {
+    width: min(94vw, calc(100dvh - 24px));
+  }
 }
