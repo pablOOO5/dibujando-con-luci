@@ -5,11 +5,6 @@
     { "id": "bichos", "name": "Bichitos", "emoji": "🦋" }
   ],
   "animals": [
-    { "id": "koala", "name": "Koala", "categoryId": "salvajes", "lineArt": "/content/animals/koala.svg", "favorite": true },
-    { "id": "elefante", "name": "Elefante", "categoryId": "salvajes", "lineArt": "/content/animals/elefante.svg" },
-    { "id": "pato", "name": "Pato", "categoryId": "agua", "lineArt": "/content/animals/pato.svg" },
-    { "id": "pez", "name": "Pez", "categoryId": "agua", "lineArt": "/content/animals/pez.svg" },
-    { "id": "tortuga", "name": "Tortuga", "categoryId": "agua", "lineArt": "/content/animals/tortuga.svg" },
-    { "id": "mariposa", "name": "Mariposa", "categoryId": "bichos", "lineArt": "/content/animals/mariposa.svg" }
+    { "id": "koala", "name": "Koala", "categoryId": "salvajes", "lineArt": "/content/animals/koala.svg", "favorite": true }
   ]
 }

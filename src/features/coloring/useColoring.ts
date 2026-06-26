@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'preact/hooks'
 import { floodFill, type RGB } from './floodFill'
 import { asset } from '../../lib/assets'
 
-// Resolucion interna del canvas. Equilibrio nitidez / memoria / velocidad de flood-fill
-// para tablets y celulares modestos.
-const RES = 900
+// Resolucion interna del canvas (apaisado 3:2). Equilibrio nitidez / memoria / velocidad
+// de flood-fill para tablets y celulares modestos. Lado largo 900.
+const RES_W = 900
+const RES_H = 600
 
 export type Tool = 'fill' | 'brush' | 'eraser'
 
@@ -24,11 +25,11 @@ export function useColoring(lineArt: string) {
     const paint = paintRef.current
     const outline = outlineRef.current
     if (!paint || !outline || !lineArt) return
-    paint.width = outline.width = RES
-    paint.height = outline.height = RES
+    paint.width = outline.width = RES_W
+    paint.height = outline.height = RES_H
     const pctx = paint.getContext('2d')!
     pctx.fillStyle = '#ffffff'
-    pctx.fillRect(0, 0, RES, RES)
+    pctx.fillRect(0, 0, RES_W, RES_H)
     undoRef.current = []
     setCanUndo(false)
 
@@ -37,10 +38,10 @@ export function useColoring(lineArt: string) {
     img.onload = () => {
       if (cancelled) return
       const octx = outline.getContext('2d', { willReadFrequently: true })!
-      octx.clearRect(0, 0, RES, RES)
-      octx.drawImage(img, 0, 0, RES, RES)
-      const data = octx.getImageData(0, 0, RES, RES).data
-      const alpha = new Uint8ClampedArray(RES * RES)
+      octx.clearRect(0, 0, RES_W, RES_H)
+      octx.drawImage(img, 0, 0, RES_W, RES_H)
+      const data = octx.getImageData(0, 0, RES_W, RES_H).data
+      const alpha = new Uint8ClampedArray(RES_W * RES_H)
       for (let i = 0; i < alpha.length; i++) alpha[i] = data[i * 4 + 3]
       alphaRef.current = alpha
       setReady(true)
@@ -54,14 +55,14 @@ export function useColoring(lineArt: string) {
   function toCanvas(clientX: number, clientY: number) {
     const r = paintRef.current!.getBoundingClientRect()
     return {
-      x: ((clientX - r.left) / r.width) * RES,
-      y: ((clientY - r.top) / r.height) * RES,
+      x: ((clientX - r.left) / r.width) * RES_W,
+      y: ((clientY - r.top) / r.height) * RES_H,
     }
   }
 
   function pushUndo() {
     const pctx = paintRef.current!.getContext('2d', { willReadFrequently: true })!
-    undoRef.current.push(pctx.getImageData(0, 0, RES, RES))
+    undoRef.current.push(pctx.getImageData(0, 0, RES_W, RES_H))
     if (undoRef.current.length > 6) undoRef.current.shift() // deshacer acotado (RAM)
     setCanUndo(true)
   }
@@ -78,7 +79,7 @@ export function useColoring(lineArt: string) {
     if (!ready || !alphaRef.current) return false
     const { x, y } = toCanvas(clientX, clientY)
     const pctx = paintRef.current!.getContext('2d', { willReadFrequently: true })!
-    const image = pctx.getImageData(0, 0, RES, RES)
+    const image = pctx.getImageData(0, 0, RES_W, RES_H)
     pushUndo()
     const changed = floodFill(image, alphaRef.current, x, y, rgb)
     if (changed) pctx.putImageData(image, 0, 0)
@@ -124,8 +125,8 @@ export function useColoring(lineArt: string) {
   /** Compone pintura + contorno en un PNG (para guardar en la galeria). */
   function exportPng(): Promise<Blob> {
     const out = document.createElement('canvas')
-    out.width = RES
-    out.height = RES
+    out.width = RES_W
+    out.height = RES_H
     const ctx = out.getContext('2d')!
     ctx.drawImage(paintRef.current!, 0, 0)
     ctx.drawImage(outlineRef.current!, 0, 0)
@@ -143,6 +144,7 @@ export function useColoring(lineArt: string) {
     strokeEnd,
     undo,
     exportPng,
-    RES,
+    RES_W,
+    RES_H,
   }
 }
