@@ -1,9 +1,9 @@
 ---
 name: cargar-nuevas-imagenes
-description: Detecta SVGs de dibujos nuevos en public/content/, los valida (3:2, sin fondo opaco), confirma categoría/nombre/emoji con el usuario y los agrega al manifest. Soporta categorías nuevas (cada una en su carpeta). Referencia metodológica: specs/05-cargar-animales-pendientes.md.
+description: Detecta SVGs de dibujos nuevos en public/content/, los valida (3:2, sin fondo opaco), confirma categoría/nombre/emoji con el usuario, crea una rama nueva desde main y los agrega al manifest. Soporta categorías nuevas (cada una en su carpeta). Referencia metodológica: specs/05-cargar-animales-pendientes.md.
 disable-model-invocation: true
 argument-hint: '(opcional) carpeta o categoría a cargar, ej. mcdonalds'
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash(node:*), Bash(npm run typecheck:*), Bash(npm run build:*), Bash(git status:*)
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash(node:*), Bash(npm run typecheck:*), Bash(npm run build:*), Bash(git status:*), Bash(git branch:*), Bash(git checkout:*), Bash(git pull:*)
 ---
 
 # /cargar-nuevas-imagenes — Cargar dibujos nuevos al juego
@@ -24,7 +24,8 @@ y **bloquea el balde**. Formato correcto: [`docs/medidas-de-los-dibujos.md`](../
 
 - **No modificar ni reescribir SVGs.** Si uno no valida, se reporta y se deja afuera; lo arregla el usuario aparte. Nunca le saques el fondo ni "limpies" la traza vos.
 - **No vectorizar imágenes crudas.** La entrada son SVGs ya listos. Si el usuario dejó PNG/JPG, frená y mandalo a `docs/medidas-de-los-dibujos.md` (vectorizar + quitar fondo es paso manual previo).
-- **No commitear, no pushear, no levantar el dev server.** Eso lo hace el usuario (workflow del proyecto). Vos editás archivos y corrés `typecheck`/`build` nomás.
+- **No commitear, no pushear, no levantar el dev server.** Eso lo hace el usuario (workflow del proyecto). Vos editás archivos, **creás/cambiás de rama** (eso sí es parte del flujo, no es commit ni push) y corrés `typecheck`/`build` nomás.
+- **Nunca trabajar sobre `main`.** Antes de escribir nada, siempre creás una rama nueva **desde `main`** (ver Fase 4). Nunca editás el manifest directamente sobre `main` ni encadenás cambios sobre una rama vieja.
 - **No tocar lo existente.** No reordenes ni renombres categorías ya presentes, no cambies `favorite` de nadie (hoy solo `koala`), no toques dibujos ya cargados.
 - **Confirmar SIEMPRE** categoría, nombre y emoji con el usuario antes de escribir el manifest.
 - **Una categoría nueva ⇒ una carpeta nueva** bajo `public/content/` (ej. `public/content/mcdonalds/`). El `name` de cada dibujo sale del **nombre del archivo** (`serpiente.svg` ⇒ "Serpiente"); ajustá acentos/mayúscula del español.
@@ -55,10 +56,10 @@ El script ya aplica las dos reglas: **3:2** (ratio ~1.5, ±2%) y **sin fondo opa
 (`valido` / `a-revisar`) y `motivo`. Resumí al usuario:
 
 - **Válidos:** candidatos a cargar.
-- **A revisar:** NO se cargan; van al reporte de pendientes (Fase 5) con su motivo.
+- **A revisar:** NO se cargan; van al reporte de pendientes (Fase 6) con su motivo.
 
 Si un SVG tiene traza ruidosa (muchos fills oscuros) pero pasa el chequeo estático, marcá que
-queda **a confirmar con el balde** en la Fase 6 (caso `abeja`/`gato` de SPEC 05).
+queda **a confirmar con el balde** en la Fase 7 (caso `abeja`/`gato` de SPEC 05).
 
 ### Fase 3 — Confirmar categoría, nombre y emoji
 
@@ -74,7 +75,37 @@ Para cada SVG **válido**, proponé en una tabla:
 **Mostrá la tabla y esperá confirmación o correcciones.** No escribas nada hasta que el
 usuario apruebe el mapeo completo (categorías nuevas + cada dibujo).
 
-### Fase 4 — Escribir el manifest
+### Fase 4 — Crear la rama de git (desde `main`)
+
+Recién acá empezás a tocar el repo. **Solo cuando ya hay contenido válido y el usuario aprobó
+el mapeo de la Fase 3** (así la rama tiene nombre por categoría y no se crean ramas vacías).
+Análogo a la Fase 3 de `/spec-impl`.
+
+1. **Guardia previa:** corré `git status --short`. Los SVG nuevos suelen estar *untracked*
+   (eso está OK: sobreviven al cambio de rama). Pero si hay **archivos trackeados modificados**
+   sin commitear, **frená** y avisá al usuario para que decida — no arrastres cambios ajenos a
+   `main`. No sigas hasta que el árbol esté limpio (salvo los untracked de los dibujos).
+2. **Partí de `main`:** `git checkout main`. Si hay remoto/conexión, actualizalo con
+   `git pull --ff-only`. Si el pull falla (offline o sin remoto), avisalo y seguí con el `main`
+   local — no es bloqueante.
+3. **Derivá el nombre** de la(s) categoría(s) que cargás, en kebab-case:
+   `nuevas-imagenes-<categoria>` (ej. `nuevas-imagenes-mcdonalds`). Si cargás varias
+   categorías, combinalas: `nuevas-imagenes-<cat1>-<cat2>`.
+4. **Creá / cambiá de rama** (mismo manejo que `/spec-impl`):
+   - Si **no existe**: `git checkout -b nuevas-imagenes-<categoria>`.
+   - Si **ya existe**: avisá que existía (puede ser retomar trabajo) y `git checkout` a ella.
+   - En ambos casos: confirmá que el cambio fue exitoso (`git branch --show-current`) antes de
+     continuar.
+5. **Confirmación visual** al usuario y pausá, como el resto de fases:
+
+   ```
+   ✅ Rama lista, recién ahora escribo archivos.
+
+   Rama base:   main
+   Rama nueva:  nuevas-imagenes-<categoria>  (activa)
+   ```
+
+### Fase 5 — Escribir el manifest
 
 En `public/content/manifest.json`:
 
@@ -84,7 +115,7 @@ En `public/content/manifest.json`:
   `favorite` salvo que el usuario lo pida explícito.
 - Validá que el JSON siga bien: `node -e "JSON.parse(require('fs').readFileSync('public/content/manifest.json','utf8')); console.log('JSON OK')"`.
 
-### Fase 5 — Reporte de pendientes
+### Fase 6 — Reporte de pendientes
 
 Registrá los SVG **a revisar** (los que no validaron) y su motivo en
 `docs/dibujos-pendientes.md` (creálo si no existe; es el equivalente genérico de
@@ -92,14 +123,15 @@ Registrá los SVG **a revisar** (los que no validaron) y su motivo en
 (fondo opaco, ratio, etc.), más un recordatorio de cómo arreglarlo (quitar el fondo blanco,
 ver `docs/medidas-de-los-dibujos.md`).
 
-### Fase 6 — Verificación
+### Fase 7 — Verificación
 
 - Corré `npm run typecheck` y `npm run build`. Ambos deben pasar.
 - **Recordale al usuario** que pruebe manualmente el **balde por cada dibujo nuevo**
   (`/colorear/<id>`): que rellene por región y no se escape ni quede bloqueado. El server lo
-  levanta él. Si alguno falla el balde, **sacalo del manifest** y mandalo a pendientes (Fase 5).
-- Cerrá con un resumen: categorías agregadas, dibujos cargados, pendientes, y el recordatorio
-  de que el commit lo hace el usuario.
+  levanta él. Si alguno falla el balde, **sacalo del manifest** y mandalo a pendientes (Fase 6).
+- Cerrá con un resumen: **rama creada** (`nuevas-imagenes-<categoria>`), categorías agregadas,
+  dibujos cargados y pendientes. Recordale al usuario que el **commit, el push y el PR** los
+  hace él (los cambios ya quedaron en la rama nueva, no en `main`).
 
 ## Notas
 
