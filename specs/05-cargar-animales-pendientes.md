@@ -1,6 +1,6 @@
 # SPEC 05 — Cargar en bulk los animales pendientes
 
-> **Estado:** aprobado · **Depende de:** SPEC 04 · **Fecha:** 2026-06-26
+> **Estado:** implementado · **Depende de:** SPEC 04 · **Fecha:** 2026-06-26
 > **Objetivo:** Agregar al juego los 20 animales que ya existen como SVG en `public/content/animals/` pero no están en `manifest.json`, validando que cada SVG sirva para el motor (3:2, sin fondo opaco) y creando las categorías `granja` y `mascotas` para los que no entran en las actuales.
 
 ---
@@ -91,17 +91,17 @@ No se introduce **ningún tipo nuevo**: se reutiliza el schema actual del `manif
 
 ## Criterios de aceptación
 
-- [ ] `manifest.json` tiene **5 categorías** en orden `salvajes, agua, bichos, granja, mascotas`, y sigue siendo JSON válido.
-- [ ] Las categorías `granja` (🐄 "De la granja") y `mascotas` (🐶 "Mascotas") existen con ese `id`, `name` y `emoji`.
-- [ ] Cada SVG **válido** de `public/content/animals/` tiene su entrada en `animals[]` con `id`=filename, `name` en español con acentos, `categoryId` según la tabla y `lineArt`=`/content/animals/<id>.svg`.
-- [ ] Ningún SVG que **no valida** quedó agregado al manifest (mínimo: `conejo` no está si mantiene los fills blancos).
-- [ ] Solo `koala` tiene `favorite: true`; ningún animal nuevo es favorito.
-- [ ] En Home, cada categoría muestra sus animales y **ninguna categoría queda vacía** (si una quedara sin animales válidos, se documenta el porqué).
-- [ ] Al abrir `/colorear/<id>` de cada animal agregado, el **balde rellena por región** sin escaparse ni quedar bloqueado por un fondo.
-- [ ] El dibujo **no se deforma** (todos los SVG cargados son 3:2).
-- [ ] Existe un **reporte de pendientes** con los SVG no cargados y el motivo de cada uno.
-- [ ] Ningún SVG fue modificado/reescrito por este spec.
-- [ ] `npm run typecheck` y `npm run build` pasan sin errores.
+- [x] `manifest.json` tiene **5 categorías** en orden `salvajes, agua, bichos, granja, mascotas`, y sigue siendo JSON válido.
+- [x] Las categorías `granja` (🐄 "De la granja") y `mascotas` (🐶 "Mascotas") existen con ese `id`, `name` y `emoji`.
+- [x] Cada SVG **válido** de `public/content/animals/` tiene su entrada en `animals[]` con `id`=filename, `name` en español con acentos, `categoryId` según la tabla y `lineArt`=`/content/animals/<id>.svg`.
+- [x] Ningún SVG que **no valida** quedó agregado al manifest (mínimo: `conejo` no está si mantiene los fills blancos).
+- [x] Solo `koala` tiene `favorite: true`; ningún animal nuevo es favorito.
+- [x] En Home, cada categoría muestra sus animales y **ninguna categoría queda vacía** (si una quedara sin animales válidos, se documenta el porqué).
+- [x] Al abrir `/colorear/<id>` de cada animal agregado, el **balde rellena por región** sin escaparse ni quedar bloqueado por un fondo.
+- [x] El dibujo **no se deforma** (todos los SVG cargados son 3:2).
+- [x] Existe un **reporte de pendientes** con los SVG no cargados y el motivo de cada uno.
+- [x] Ningún SVG fue modificado/reescrito por este spec.
+- [x] `npm run typecheck` y `npm run build` pasan sin errores.
 
 ---
 
