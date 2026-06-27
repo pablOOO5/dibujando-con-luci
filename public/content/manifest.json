@@ -36,6 +36,13 @@
     { "id": "caballo", "name": "Caballo", "categoryId": "granja", "lineArt": "/content/animals/caballo.svg" },
     { "id": "vaca", "name": "Vaca", "categoryId": "granja", "lineArt": "/content/animals/vaca.svg" },
     { "id": "gato", "name": "Gato", "categoryId": "mascotas", "lineArt": "/content/animals/gato.svg" },
-    { "id": "perro", "name": "Perro", "categoryId": "mascotas", "lineArt": "/content/animals/perro.svg" }
+    { "id": "perro", "name": "Perro", "categoryId": "mascotas", "lineArt": "/content/animals/perro.svg" },
+    { "id": "cachorro-tigre-mariposa", "name": "Cachorro tigre jugando con mariposa", "categoryId": "salvajes", "lineArt": "/content/salvajes/cachorro-tigre-mariposa.svg" },
+    { "id": "elefante-bebe-paisaje", "name": "Elefante bebé en un paisaje alegre", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-bebe-paisaje.svg" },
+    { "id": "elefante-charco", "name": "Elefante jugando en un charco", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-charco.svg" },
+    { "id": "jirafa-bebe-sabana", "name": "Jirafa bebé en la sabana alegre", "categoryId": "salvajes", "lineArt": "/content/salvajes/jirafa-bebe-sabana.svg" },
+    { "id": "loro-bebe-selva", "name": "Loro bebé en la selva tropical", "categoryId": "salvajes", "lineArt": "/content/salvajes/loro-bebe-selva.svg" },
+    { "id": "pavo-real-jardin", "name": "Pavo real bebé en jardín encantado", "categoryId": "salvajes", "lineArt": "/content/salvajes/pavo-real-jardin.svg" },
+    { "id": "zorro-bosque", "name": "Zorro juguetón en el bosque", "categoryId": "salvajes", "lineArt": "/content/salvajes/zorro-bosque.svg" }
   ]
 }
