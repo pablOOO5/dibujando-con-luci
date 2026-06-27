@@ -2,9 +2,27 @@
   "categories": [
     { "id": "salvajes", "name": "Salvajes", "emoji": "🐨" },
     { "id": "agua", "name": "Del agua", "emoji": "🦆" },
-    { "id": "bichos", "name": "Bichitos", "emoji": "🦋" }
+    { "id": "bichos", "name": "Bichitos", "emoji": "🦋" },
+    { "id": "granja", "name": "De la granja", "emoji": "🐄" },
+    { "id": "mascotas", "name": "Mascotas", "emoji": "🐶" }
   ],
   "animals": [
-    { "id": "koala", "name": "Koala", "categoryId": "salvajes", "lineArt": "/content/animals/koala.svg", "favorite": true }
+    { "id": "koala", "name": "Koala", "categoryId": "salvajes", "lineArt": "/content/animals/koala.svg", "favorite": true },
+    { "id": "elefante", "name": "Elefante", "categoryId": "salvajes", "lineArt": "/content/animals/elefante.svg" },
+    { "id": "jirafa", "name": "Jirafa", "categoryId": "salvajes", "lineArt": "/content/animals/jirafa.svg" },
+    { "id": "leon", "name": "León", "categoryId": "salvajes", "lineArt": "/content/animals/leon.svg" },
+    { "id": "mono", "name": "Mono", "categoryId": "salvajes", "lineArt": "/content/animals/mono.svg" },
+    { "id": "oso", "name": "Oso", "categoryId": "salvajes", "lineArt": "/content/animals/oso.svg" },
+    { "id": "pato", "name": "Pato", "categoryId": "agua", "lineArt": "/content/animals/pato.svg" },
+    { "id": "pez", "name": "Pez", "categoryId": "agua", "lineArt": "/content/animals/pez.svg" },
+    { "id": "pinguino", "name": "Pingüino", "categoryId": "agua", "lineArt": "/content/animals/pinguino.svg" },
+    { "id": "tortuga", "name": "Tortuga", "categoryId": "agua", "lineArt": "/content/animals/tortuga.svg" },
+    { "id": "abeja", "name": "Abeja", "categoryId": "bichos", "lineArt": "/content/animals/abeja.svg" },
+    { "id": "caracol", "name": "Caracol", "categoryId": "bichos", "lineArt": "/content/animals/caracol.svg" },
+    { "id": "mariquita", "name": "Mariquita", "categoryId": "bichos", "lineArt": "/content/animals/mariquita.svg" },
+    { "id": "caballo", "name": "Caballo", "categoryId": "granja", "lineArt": "/content/animals/caballo.svg" },
+    { "id": "vaca", "name": "Vaca", "categoryId": "granja", "lineArt": "/content/animals/vaca.svg" },
+    { "id": "gato", "name": "Gato", "categoryId": "mascotas", "lineArt": "/content/animals/gato.svg" },
+    { "id": "perro", "name": "Perro", "categoryId": "mascotas", "lineArt": "/content/animals/perro.svg" }
   ]
 }
