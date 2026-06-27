@@ -43,6 +43,21 @@
     { "id": "jirafa-bebe-sabana", "name": "Jirafa bebé en la sabana alegre", "categoryId": "salvajes", "lineArt": "/content/salvajes/jirafa-bebe-sabana.svg" },
     { "id": "loro-bebe-selva", "name": "Loro bebé en la selva tropical", "categoryId": "salvajes", "lineArt": "/content/salvajes/loro-bebe-selva.svg" },
     { "id": "pavo-real-jardin", "name": "Pavo real bebé en jardín encantado", "categoryId": "salvajes", "lineArt": "/content/salvajes/pavo-real-jardin.svg" },
-    { "id": "zorro-bosque", "name": "Zorro juguetón en el bosque", "categoryId": "salvajes", "lineArt": "/content/salvajes/zorro-bosque.svg" }
+    { "id": "zorro-bosque", "name": "Zorro juguetón en el bosque", "categoryId": "salvajes", "lineArt": "/content/salvajes/zorro-bosque.svg" },
+    { "id": "elefante-bebe-jugando-con-pelota", "name": "Elefante bebé jugando con pelota", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-bebe-jugando-con-pelota.svg" },
+    { "id": "elefante-en-la-laguna-bajo-el-sol", "name": "Elefante en la laguna bajo el sol", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-en-la-laguna-bajo-el-sol.svg" },
+    { "id": "elefante-lanzando-chorro-de-agua", "name": "Elefante lanzando chorro de agua", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-lanzando-chorro-de-agua.svg" },
+    { "id": "panda-rojo-acurrucado-bambu-rompecabezas", "name": "Panda rojo acurrucado en el bambú", "categoryId": "salvajes", "lineArt": "/content/salvajes/panda-rojo-acurrucado-bambu-rompecabezas.svg" },
+    { "id": "panda-rojo-entre-bambu", "name": "Panda rojo entre el bambú", "categoryId": "salvajes", "lineArt": "/content/salvajes/panda-rojo-entre-bambu.svg" },
+    { "id": "animales-selva-elefante-mono-leon", "name": "Elefante, mono y león en la selva", "categoryId": "salvajes", "lineArt": "/content/salvajes/animales-selva-elefante-mono-leon.svg" },
+    { "id": "cachorro-de-leon-jugando-con-pelota", "name": "Cachorro de león jugando con pelota", "categoryId": "salvajes", "lineArt": "/content/salvajes/cachorro-de-leon-jugando-con-pelota.svg" },
+    { "id": "elefante-bebe-jugando-en-el-agua", "name": "Elefante bebé jugando en el agua", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-bebe-jugando-en-el-agua.svg" },
+    { "id": "elefante-leon-y-jirafa-en-la-sabana", "name": "Elefante, león y jirafa en la sabana", "categoryId": "salvajes", "lineArt": "/content/salvajes/elefante-leon-y-jirafa-en-la-sabana.svg" },
+    { "id": "guacamayo-volando-en-la-selva", "name": "Guacamayo volando en la selva", "categoryId": "salvajes", "lineArt": "/content/salvajes/guacamayo-volando-en-la-selva.svg" },
+    { "id": "leon-corriendo-con-mariposa", "name": "León corriendo con mariposa", "categoryId": "salvajes", "lineArt": "/content/salvajes/leon-corriendo-con-mariposa.svg" },
+    { "id": "mono-colgado-de-una-liana", "name": "Mono colgado de una liana", "categoryId": "salvajes", "lineArt": "/content/salvajes/mono-colgado-de-una-liana.svg" },
+    { "id": "rinoceronte-jugando-con-pelota", "name": "Rinoceronte jugando con pelota", "categoryId": "salvajes", "lineArt": "/content/salvajes/rinoceronte-jugando-con-pelota.svg" },
+    { "id": "mantarraya-en-el-fondo-del-mar", "name": "Mantarraya en el fondo del mar", "categoryId": "agua", "lineArt": "/content/salvajes/mantarraya-en-el-fondo-del-mar.svg" },
+    { "id": "pulpo-en-el-fondo-del-mar", "name": "Pulpo en el fondo del mar", "categoryId": "agua", "lineArt": "/content/salvajes/pulpo-en-el-fondo-del-mar.svg" }
   ]
 }
