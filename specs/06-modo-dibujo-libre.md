@@ -1,6 +1,6 @@
 # SPEC 06 — Modo "Dibujo libre" (lienzo en blanco)
 
-> **Estado:** Aprobado · **Depende de:** SPEC 04 (lienzo 3:2) · **Fecha:** 2026-06-27
+> **Estado:** Implementado · **Depende de:** SPEC 04 (lienzo 3:2) · **Fecha:** 2026-06-27
 > **Objetivo:** Agregar un modo "Dibujo libre" que abre un lienzo apaisado 3:2 en blanco (sin contorno) con pincel, goma y balde, accesible desde una tarjeta fija primera en la grilla del Home y guardable en la galería igual que un animal.
 
 ---
@@ -65,16 +65,16 @@ No se introduce ningún tipo nuevo ni se toca el `manifest.json`. El modo libre 
 
 ## Criterios de aceptación
 
-- [ ] Existe la ruta `/libre` y abre un lienzo apaisado 3:2 en blanco (sin contorno).
-- [ ] En Home, una tarjeta "✏️ Dibujo libre" aparece primera en la grilla de cada categoría y navega a `/libre`.
-- [ ] En modo libre, pincel y goma pintan/borran sobre el lienzo blanco.
-- [ ] El balde rellena la región contigua del mismo color: en lienzo vacío pinta todo el fondo; dentro de un trazo cerrado, rellena solo adentro.
-- [ ] Deshacer funciona (acotado a 6 snapshots, como en animales).
-- [ ] `¡Listo!` dispara el festejo y permite Guardar; el dibujo aparece en la galería como "Dibujo libre", completo y sin recorte (3:2).
-- [ ] Se pueden guardar varios dibujos libres sin pisarse entre sí.
-- [ ] El `manifest.json` no se modifica; no hay un animal "libre" en el contenido.
-- [ ] Las rutas y pantallas existentes (animales, galería, ajustes) siguen funcionando igual.
-- [ ] `npm run typecheck` y `npm run build` pasan sin errores.
+- [x] Existe la ruta `/libre` y abre un lienzo apaisado 3:2 en blanco (sin contorno).
+- [x] En Home, una tarjeta "✏️ Dibujo libre" aparece primera en la grilla de cada categoría y navega a `/libre`.
+- [x] En modo libre, pincel y goma pintan/borran sobre el lienzo blanco.
+- [x] El balde rellena la región contigua del mismo color: en lienzo vacío pinta todo el fondo; dentro de un trazo cerrado, rellena solo adentro.
+- [x] Deshacer funciona (acotado a 6 snapshots, como en animales).
+- [x] `¡Listo!` dispara el festejo y permite Guardar; el dibujo aparece en la galería como "Dibujo libre", completo y sin recorte (3:2).
+- [x] Se pueden guardar varios dibujos libres sin pisarse entre sí.
+- [x] El `manifest.json` no se modifica; no hay un animal "libre" en el contenido.
+- [x] Las rutas y pantallas existentes (animales, galería, ajustes) siguen funcionando igual.
+- [x] `npm run typecheck` y `npm run build` pasan sin errores.
 
 ---
 
