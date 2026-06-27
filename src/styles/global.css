@@ -218,12 +218,19 @@ button {
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
+  /* En celular angosto los 4 iconos + Listo no entran en una fila: que Listo
+     baje a una segunda linea en vez de desbordar. */
+  flex-wrap: wrap;
 }
 .coloring-title {
   flex: 1;
+  min-width: 0; /* permite que el titulo se achique antes de empujar a Listo fuera */
   text-align: center;
   font-size: 20px;
   font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .btn-listo {
   min-height: var(--tap);
@@ -484,12 +491,15 @@ button {
     flex-direction: row;
   }
 
-  /* Columna izquierda: acciones apiladas, sin titulo */
+  /* Columna izquierda: acciones apiladas, sin titulo. gap acotado y sin wrap
+     para que volver/eliminar/camara/deshacer + Listo entren a lo alto en
+     celulares apaisados bajos (~360px) sin formar una segunda columna. */
   .tool-top {
     flex-direction: column;
+    flex-wrap: nowrap;
     width: 96px;
     flex-shrink: 0;
-    gap: 16px;
+    gap: 12px;
   }
   .coloring-title {
     display: none;

@@ -10,6 +10,7 @@ import { useSettings } from '../store/settings'
 import { playPop, playSuccess } from '../lib/sound'
 
 const BRUSH_SIZE = 26
+const PENCIL_SIZE = 8
 const ERASER_SIZE = 52
 
 // "Animal" sintetico del modo libre: no vive en el manifest, es solo de UI.
@@ -42,7 +43,8 @@ export function Coloring({ id, free = false }: { id?: string; free?: boolean }) 
   const raf = useRef<number | undefined>(undefined)
 
   const strokeColor = () => (tool === 'eraser' ? '#ffffff' : color)
-  const strokeSize = () => (tool === 'eraser' ? ERASER_SIZE : BRUSH_SIZE)
+  const strokeSize = () =>
+    tool === 'eraser' ? ERASER_SIZE : tool === 'pencil' ? PENCIL_SIZE : BRUSH_SIZE
 
   function onPointerDown(e: PointerEvent) {
     ;(e.currentTarget as Element).setPointerCapture?.(e.pointerId)
@@ -79,6 +81,27 @@ export function Coloring({ id, free = false }: { id?: string; free?: boolean }) 
     }
   }
 
+  // Camara: exporta el dibujo (pintura + contorno) al dispositivo. Comparte el
+  // archivo si el sistema lo soporta (mejor en tablet/celular); si no, descarga.
+  async function capture() {
+    const blob = await c.exportPng()
+    const file = new File([blob], `luci-${animal?.id ?? 'dibujo'}.png`, { type: 'image/png' })
+    if (navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file] })
+        return
+      } catch {
+        // cancelado o fallo: cae a descarga
+      }
+    }
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = file.name
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   async function doSave() {
     if (!animal) return
     const blob = await c.exportPng()
@@ -99,6 +122,8 @@ export function Coloring({ id, free = false }: { id?: string; free?: boolean }) 
     <div class="coloring">
       <header class="tool-top">
         <button class="icon-btn" onClick={() => route('/')} aria-label="Volver">←</button>
+        <button class="icon-btn" onClick={c.reset} disabled={!c.ready} aria-label="Eliminar">🗑️</button>
+        <button class="icon-btn" onClick={capture} disabled={!c.ready} aria-label="Cámara">📷</button>
         <button class="icon-btn" onClick={c.undo} disabled={!c.canUndo} aria-label="Deshacer">↩️</button>
         <span class="coloring-title">{animal?.name ?? ''}</span>
         <button class="btn-listo" onClick={finish} disabled={!c.ready}>¡Listo! 🎉</button>
@@ -123,6 +148,7 @@ export function Coloring({ id, free = false }: { id?: string; free?: boolean }) 
         <div class="tools" role="toolbar" aria-label="Herramientas">
           <button class={`tool ${tool === 'fill' ? 'active' : ''}`} onClick={() => setTool('fill')} aria-label="Balde">🪣</button>
           <button class={`tool ${tool === 'brush' ? 'active' : ''}`} onClick={() => setTool('brush')} aria-label="Pincel">🖌️</button>
+          <button class={`tool ${tool === 'pencil' ? 'active' : ''}`} onClick={() => setTool('pencil')} aria-label="Lápiz">✏️</button>
           <button class={`tool ${tool === 'eraser' ? 'active' : ''}`} onClick={() => setTool('eraser')} aria-label="Goma">🧽</button>
         </div>
         <div class="palette" role="listbox" aria-label="Colores">
