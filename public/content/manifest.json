@@ -1,13 +1,21 @@
 {
   "categories": [
-    { "id": "salvajes", "name": "Salvajes", "emoji": "🐨" },
+    { "id": "koala", "name": "Koala", "emoji": "🐨" },
+    { "id": "salvajes", "name": "Salvajes", "emoji": "🦁" },
     { "id": "agua", "name": "Del agua", "emoji": "🦆" },
     { "id": "bichos", "name": "Bichitos", "emoji": "🦋" },
     { "id": "granja", "name": "De la granja", "emoji": "🐄" },
     { "id": "mascotas", "name": "Mascotas", "emoji": "🐶" }
   ],
   "animals": [
-    { "id": "koala", "name": "Koala", "categoryId": "salvajes", "lineArt": "/content/animals/koala.svg", "favorite": true },
+    { "id": "koala", "name": "Koala", "categoryId": "koala", "lineArt": "/content/koala/koala.svg", "favorite": true },
+    { "id": "koala-inodoro", "name": "Koala en el inodoro", "categoryId": "koala", "lineArt": "/content/koala/koala-inodoro.svg" },
+    { "id": "familia-koala", "name": "La familia koala", "categoryId": "koala", "lineArt": "/content/koala/familia-koala.svg" },
+    { "id": "koala-dormir-con-mama", "name": "Koala durmiendo con mamá", "categoryId": "koala", "lineArt": "/content/koala/koala-dormir-con-mama.svg" },
+    { "id": "koala-futbol", "name": "Koala jugando al fútbol", "categoryId": "koala", "lineArt": "/content/koala/koala-futbol.svg" },
+    { "id": "koala-lava-dientes", "name": "Koala se lava los dientes", "categoryId": "koala", "lineArt": "/content/koala/koala-lava-dientes.svg" },
+    { "id": "kola-mc-donald", "name": "Koala en McDonald's", "categoryId": "koala", "lineArt": "/content/koala/kola-mc-donald.svg" },
+    { "id": "escuela-familia", "name": "Escuela en familia", "categoryId": "koala", "lineArt": "/content/koala/escuela-familia.svg" },
     { "id": "elefante", "name": "Elefante", "categoryId": "salvajes", "lineArt": "/content/animals/elefante.svg" },
     { "id": "jirafa", "name": "Jirafa", "categoryId": "salvajes", "lineArt": "/content/animals/jirafa.svg" },
     { "id": "leon", "name": "León", "categoryId": "salvajes", "lineArt": "/content/animals/leon.svg" },
