@@ -7,7 +7,7 @@ import { asset } from '../../lib/assets'
 const RES_W = 900
 const RES_H = 600
 
-export type Tool = 'fill' | 'brush' | 'eraser'
+export type Tool = 'fill' | 'brush' | 'pencil' | 'eraser'
 
 export function useColoring(lineArt: string, blank = false) {
   const paintRef = useRef<HTMLCanvasElement>(null)
@@ -99,6 +99,15 @@ export function useColoring(lineArt: string, blank = false) {
     return changed
   }
 
+  /** Borra toda la pintura (deshacible). Deja el contorno y la mascara intactos. */
+  function reset() {
+    if (!ready) return
+    pushUndo()
+    const pctx = paintRef.current!.getContext('2d')!
+    pctx.fillStyle = '#ffffff'
+    pctx.fillRect(0, 0, RES_W, RES_H)
+  }
+
   function strokeStart(clientX: number, clientY: number, color: string, size: number) {
     if (!ready) return
     pushUndo()
@@ -154,6 +163,7 @@ export function useColoring(lineArt: string, blank = false) {
     strokeMove,
     strokeEnd,
     undo,
+    reset,
     exportPng,
     RES_W,
     RES_H,
