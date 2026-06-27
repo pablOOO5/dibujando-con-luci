@@ -12,21 +12,24 @@ import { playPop, playSuccess } from '../lib/sound'
 const BRUSH_SIZE = 26
 const ERASER_SIZE = 52
 
-export function Coloring({ id }: { id?: string }) {
+// "Animal" sintetico del modo libre: no vive en el manifest, es solo de UI.
+const LIBRE: Animal = { id: 'libre', name: 'Dibujo libre', categoryId: '', lineArt: '' }
+
+export function Coloring({ id, free = false }: { id?: string; free?: boolean }) {
   const route = useNav()
-  const [animal, setAnimal] = useState<Animal | null>(null)
+  const [animal, setAnimal] = useState<Animal | null>(free ? LIBRE : null)
   const [notFound, setNotFound] = useState(false)
 
   useEffect(() => {
-    if (!id) return
+    if (free || !id) return
     loadContent().then((c) => {
       const a = findAnimal(c, id)
       if (a) setAnimal(a)
       else setNotFound(true)
     })
-  }, [id])
+  }, [id, free])
 
-  const c = useColoring(animal?.lineArt ?? '')
+  const c = useColoring(animal?.lineArt ?? '', free)
   const [tool, setTool] = useState<Tool>('fill')
   const [color, setColor] = useState(PALETTE[0].hex)
   const [reward, setReward] = useState(false)

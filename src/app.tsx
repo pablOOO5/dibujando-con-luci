@@ -16,6 +16,7 @@ export function App() {
       <div class="app">
         <Router>
           <Route path={path('/')} component={Home} />
+          <Route path={path('/libre')} component={() => <Coloring free />} />
           <Route path={path('/colorear/:id')} component={Coloring} />
           <Route path={path('/galeria')} component={Gallery} />
           <Route path={path('/ajustes')} component={Settings} />

@@ -9,7 +9,7 @@ const RES_H = 600
 
 export type Tool = 'fill' | 'brush' | 'eraser'
 
-export function useColoring(lineArt: string) {
+export function useColoring(lineArt: string, blank = false) {
   const paintRef = useRef<HTMLCanvasElement>(null)
   const outlineRef = useRef<HTMLCanvasElement>(null)
   const alphaRef = useRef<Uint8ClampedArray | null>(null) // mascara de bordes (contorno)
@@ -24,7 +24,8 @@ export function useColoring(lineArt: string) {
     setReady(false)
     const paint = paintRef.current
     const outline = outlineRef.current
-    if (!paint || !outline || !lineArt) return
+    if (!paint || !outline) return
+    if (!lineArt && !blank) return // sin animal y sin modo libre: nada que inicializar
     paint.width = outline.width = RES_W
     paint.height = outline.height = RES_H
     const pctx = paint.getContext('2d')!
@@ -32,6 +33,16 @@ export function useColoring(lineArt: string) {
     pctx.fillRect(0, 0, RES_W, RES_H)
     undoRef.current = []
     setCanUndo(false)
+
+    // Modo libre: lienzo en blanco sin contorno. Mascara de bordes toda en cero
+    // (sin paredes): el balde rellena la region contigua del mismo color.
+    if (blank) {
+      const octx = outline.getContext('2d', { willReadFrequently: true })!
+      octx.clearRect(0, 0, RES_W, RES_H)
+      alphaRef.current = new Uint8ClampedArray(RES_W * RES_H)
+      setReady(true)
+      return
+    }
 
     let cancelled = false
     const img = new Image()
@@ -50,7 +61,7 @@ export function useColoring(lineArt: string) {
     return () => {
       cancelled = true
     }
-  }, [lineArt])
+  }, [lineArt, blank])
 
   function toCanvas(clientX: number, clientY: number) {
     const r = paintRef.current!.getBoundingClientRect()
