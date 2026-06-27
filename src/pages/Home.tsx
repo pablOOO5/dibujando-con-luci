@@ -44,6 +44,10 @@ export function Home() {
       </nav>
 
       <main class="animal-grid">
+        <button class="animal-card libre" onClick={() => route('/libre')}>
+          <span class="libre-emoji" aria-hidden="true">✏️</span>
+          <span class="animal-name">Dibujo libre</span>
+        </button>
         {animals.map((a) => (
           <button key={a.id} class={`animal-card ${a.favorite ? 'fav' : ''}`} onClick={() => route(`/colorear/${a.id}`)}>
             {a.favorite && <span class="fav-star" aria-hidden="true">⭐</span>}

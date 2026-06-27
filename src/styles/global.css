@@ -187,6 +187,17 @@ button {
 .animal-card.fav {
   outline: 4px solid #ffd23e;
 }
+/* Tarjeta del modo libre: recuadro con emoji en vez de <img>. */
+.animal-card .libre-emoji {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  background: #f3f4f6;
+  border-radius: 14px;
+}
 .fav-star {
   position: absolute;
   top: -8px;
